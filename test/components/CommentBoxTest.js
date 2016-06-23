@@ -1,4 +1,4 @@
-import { renderComponent, expect } from '../test_helper';
+import { renderComponent, expect } from '../test_helper.js';
 import CommentBox from '../../src/components/CommentBox';
 
 describe('CommentBox', () => {
@@ -18,10 +18,17 @@ describe('CommentBox', () => {
   });
 
   //since these two tests are closely related, we will nest another describe block in here.
-  it('shows text that is entered', () => {
-
+  describe('entering some text into box', () => {
+    beforeEach(() => {
+      component.find('textarea').simulate('change', 'New Comment');
+    });
+    it('shows that text in the textarea', () => {
+      expect(component.find('textarea')).to.have.value('New Comment');
+    });
+    it('when submitted clears the input', () => {
+      component.simulate('submit');
+      expect(component.find('textarea')).to.have.value('');
+    });
   });
-  it('when submitted clears the input', () => {
 
-  });
 });
