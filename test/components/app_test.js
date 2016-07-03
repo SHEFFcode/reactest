@@ -1,6 +1,6 @@
 import { renderComponent, expect } from '../test_helper';
 import App from '../../src/components/app';
-
+//test for app
 describe('App', () => {
   let component;
   beforeEach(() => {
